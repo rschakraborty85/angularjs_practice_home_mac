@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+  </script>
+  <script type="text/javascript" src="./fap.js"></script>
+
+  <style>
+    #red {
+      background-color: red;
+    }
+
+    #lsalmon {
+      background-color: lightsalmon;
+    }
+
+    #lgreen {
+      background-color: lightgreen;
+    }
+  </style>
+</head>
+
+<body class="container" ng-app="FirstAngApp">
+  <div ng-controller="FirstAngAppCntrl as cntrl">
+    <br/>
+    <p>:: Data Binding Example ::</p>
+    <input type="text" ng-model="cntrl.bind_var" placeholder="{{cntrl.placeholder}}" />
+    <br/>
+    <br/> {{cntrl.bind_var | uppercase}}
+    <br/>
+    <br/>
+
+    <p>:: Array With OOB & Custom Filter Example ::</p>
+    <br/>
+    <p ng-repeat="arr in cntrl.static_array | limitTo:2">
+      {{arr | firstAngAppFilter}}
+    </p>
+    <button ng-click="cntrl.someFunc()">
+      Print to console
+    </button>
+    <br/>
+    <br/>
+
+    <p>:: Directive Example ::</p>
+    <div id="red" ng-hide="cntrl.isHidden">Red</div>
+    <div id="lsalmon" ng-hide="cntrl.isHidden">Light Salmon</div>
+    <div id="lgreen" ng-hide="cntrl.isHidden">Light Green</div>
+    <br/>
+    
+    <!--button ng-click="cntrl.alterHiddenValue()">
+      {{cntrl.isHidden ? "Show color" : "Hide color"}}
+    </button-->
+    
+    <br/>
+    <p>
+      : Calling Custom Directive :
+    </p>
+      <div alter-hidden-value-dir>
+    <br/>
+
+  </div>
+</body>
+
+</html>
